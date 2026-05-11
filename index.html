@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stock Return & Goods Issue - Medisearch Life Sciences</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar no-print">
+      <div class="brand-chip">
+        <div>
+          <div class="brand-name">Medisearch Life Sciences</div>
+          <div class="brand-kicker">Stock Operations</div>
+        </div>
+      </div>
+      <nav class="top-actions" aria-label="Report actions">
+        <button type="button" class="btn btn-dark" id="newReportBtn">
+          <span class="btn-icon">+</span>
+          New Stock Return
+        </button>
+        <button type="button" class="btn btn-ghost" id="themeBtn">
+          <span class="btn-icon" id="themeIcon">&#9790;</span>
+          <span id="themeText">Dark Mode</span>
+        </button>
+        <button type="button" class="btn btn-ghost" id="savedBtn">
+          <span class="btn-icon">#</span>
+          Saved Reports
+        </button>
+      </nav>
+    </header>
+
+    <main class="workspace">
+      <section class="doc-toolbar no-print">
+        <div>
+          <div class="eyebrow">New Document</div>
+          <h1>Stock Return &amp; Goods Issue</h1>
+        </div>
+        <div class="toolbar-actions">
+          <button type="button" class="btn btn-soft" id="resetBtn">
+            <span class="btn-icon">&#8634;</span>
+            Reset
+          </button>
+          <button type="button" class="btn btn-outline" id="saveBtn">
+            <span class="btn-icon">&#9633;</span>
+            Save Report
+          </button>
+          <button type="button" class="btn btn-outline" id="exportBtn">
+            <span class="btn-icon">X</span>
+            Export Excel
+          </button>
+          <button type="button" class="btn btn-dark" id="printBtn">
+            <span class="btn-icon">&#9635;</span>
+            Print Report
+          </button>
+        </div>
+      </section>
+
+      <div id="print-area" class="report-sheet">
+        <header class="report-head">
+          <div class="report-brand">
+            <div>
+              <div class="report-company">Medisearch Life Sciences</div>
+              <div class="report-tagline">Pharmaceutical Distribution &middot; Quality Assured</div>
+            </div>
+          </div>
+          <div class="company-lines">
+            <div>Address: 242, AyodhyaPuri Colony, Lucknow - 226002</div>
+            <div>Phone: +91 7905522586</div>
+            <div>Email: medisearchlife@gmail.com</div>
+          </div>
+          <div class="report-title-row">
+            <h2>Stock Return &amp; Goods Issue Report</h2>
+            <span>For Office Use</span>
+          </div>
+        </header>
+
+        <section class="panel-block party-block">
+          <h3><span class="section-mark">#</span> Party Information</h3>
+          <div class="form-grid">
+            <label>
+              <span>Party / Customer Name <b>*</b></span>
+              <input id="partyName" type="text" placeholder="Enter party / customer name" />
+            </label>
+            <label>
+              <span>Date Received <b>*</b></span>
+              <input id="dateReceived" type="date" />
+            </label>
+            <label>
+              <span>Invoice / Reference Number</span>
+              <input id="refNumber" type="text" placeholder="e.g. INV-2026-0142" />
+            </label>
+            <label>
+              <span>Remarks</span>
+              <input id="remarks" type="text" placeholder="Any notes about this return..." />
+            </label>
+          </div>
+        </section>
+
+        <section class="line-section">
+          <div class="section-heading">
+            <span>01</span>
+            <div>
+              <h3>Expiry Products Received</h3>
+              <p>Items returned by the party due to expiry / damage</p>
+            </div>
+          </div>
+          <div class="table-card">
+            <table class="data-table" id="expiryTable">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Product Name</th>
+                  <th>Batch No</th>
+                  <th>Expiry Date</th>
+                  <th>Qty</th>
+                  <th>MRP (&#8377;)</th>
+                  <th>Amount (&#8377;)</th>
+                  <th class="no-print">Action</th>
+                </tr>
+              </thead>
+              <tbody id="expiryTbody"></tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="6">Total Expiry Amount</td>
+                  <td id="expiryTotalCell">&#8377;0.00</td>
+                  <td class="no-print"></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <button type="button" class="btn btn-outline add-row no-print" id="addExpiryRow">
+            <span class="btn-icon">+</span>
+            Add Expiry Product
+          </button>
+        </section>
+
+        <section class="line-section">
+          <div class="section-heading">
+            <span>02</span>
+            <div>
+              <h3>Goods Given in Exchange</h3>
+              <p>Replacement items issued to the party against the expiry return</p>
+            </div>
+          </div>
+          <div class="table-card">
+            <table class="data-table" id="goodsTable">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Product Name</th>
+                  <th>Given Date</th>
+                  <th>Qty</th>
+                  <th>Rate (&#8377;)</th>
+                  <th>Amount (&#8377;)</th>
+                  <th class="no-print">Action</th>
+                </tr>
+              </thead>
+              <tbody id="goodsTbody"></tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5">Total Goods Given Amount</td>
+                  <td id="goodsTotalCell">&#8377;0.00</td>
+                  <td class="no-print"></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <button type="button" class="btn btn-outline add-row no-print" id="addGoodsRow">
+            <span class="btn-icon">+</span>
+            Add Goods Issued
+          </button>
+        </section>
+
+        <section class="summary-section">
+          <h3>Summary</h3>
+          <div class="summary-grid">
+            <div class="summary-card">
+              <span>Total Expiry Products</span>
+              <strong id="totalExpiryAmount">&#8377;0.00</strong>
+            </div>
+            <div class="summary-card">
+              <span>Total Goods Given</span>
+              <strong id="totalGoodsAmount">&#8377;0.00</strong>
+            </div>
+            <div class="summary-card balance-card">
+              <span id="balanceLabel">Settled - No Balance</span>
+              <strong id="balanceAmount">&#8377;0.00</strong>
+            </div>
+          </div>
+        </section>
+
+        <footer class="signature-grid">
+          <div class="signature">
+            <div class="signature-line"></div>
+            <strong>Authorized Signature</strong>
+            <span>For Medisearch Life Sciences</span>
+          </div>
+          <div class="signature">
+            <div class="signature-line"></div>
+            <strong>Receiver Signature</strong>
+            <span>Party / Customer</span>
+          </div>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop no-print" id="historyModal" aria-hidden="true">
+    <section class="history-modal" role="dialog" aria-modal="true" aria-labelledby="historyTitle">
+      <div class="modal-head">
+        <h2 id="historyTitle">Saved Reports</h2>
+        <button type="button" class="modal-close" id="closeHistoryBtn" aria-label="Close saved reports">&times;</button>
+      </div>
+      <div class="history-filters">
+        <label>
+          <span>Search</span>
+          <input id="historySearch" type="search" placeholder="Party, reference, remarks..." />
+        </label>
+        <label>
+          <span>From Date</span>
+          <input id="historyFrom" type="date" />
+        </label>
+        <label>
+          <span>To Date</span>
+          <input id="historyTo" type="date" />
+        </label>
+        <button type="button" class="btn btn-soft btn-small" id="clearFiltersBtn">Clear</button>
+      </div>
+      <div class="history-list" id="historyList"></div>
+    </section>
+  </div>
+
+  <div class="toast no-print" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
