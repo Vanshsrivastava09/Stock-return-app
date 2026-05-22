@@ -39,8 +39,9 @@ MEDISEARCH/
 ├── styles.css
 ├── app.js
 └── README.md
+'''
 
-# Future Improvements
+## Future Improvements
  PDF export support
  Cloud backup and synchronization
  Multi-device access
